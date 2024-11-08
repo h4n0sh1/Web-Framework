@@ -7,7 +7,7 @@ interface UserProps {
 }
 
 export class User {
-  events: Eventing = new Eventing;
+  public events: Eventing = new Eventing();
 
   constructor(private data: UserProps) {}
 
@@ -19,9 +19,6 @@ export class User {
     // Copy and overwrite this.data object with update object
     Object.assign(this.data, update);
   }
-
-
-
 
   fetch(): void {
     axios
