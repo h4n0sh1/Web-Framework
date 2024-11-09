@@ -126,22 +126,23 @@ Object.defineProperty(exports, "__esModule", {
 exports.Eventing = void 0;
 var Eventing = /** @class */function () {
   function Eventing() {
+    var _this = this;
     this.events = {};
+    this.on = function (eventName, callback) {
+      var handlers = _this.events[eventName] || [];
+      handlers.push(callback);
+      _this.events[eventName] = handlers;
+    };
+    this.trigger = function (eventName) {
+      var handlers = _this.events[eventName];
+      if (!handlers || handlers.length === 0) {
+        return;
+      }
+      handlers.forEach(function (callback) {
+        callback();
+      });
+    };
   }
-  Eventing.prototype.on = function (eventName, callback) {
-    var handlers = this.events[eventName] || [];
-    handlers.push(callback);
-    this.events[eventName] = handlers;
-  };
-  Eventing.prototype.trigger = function (eventName) {
-    var handlers = this.events[eventName];
-    if (!handlers || handlers.length === 0) {
-      return;
-    }
-    handlers.forEach(function (callback) {
-      callback();
-    });
-  };
   return Eventing;
 }();
 exports.Eventing = Eventing;
@@ -6151,12 +6152,14 @@ Object.defineProperty(exports, "__esModule", {
 exports.Attributes = void 0;
 var Attributes = /** @class */function () {
   function Attributes(data) {
+    var _this = this;
     this.data = data;
+    // Constrains K to be one of the Keys declared in T
+    // Arrow function bounds this to the current instance
+    this.get = function (key) {
+      return _this.data[key];
+    };
   }
-  // Constrains K to be one of the Keys declared in T
-  Attributes.prototype.get = function (key) {
-    return this.data[key];
-  };
   Attributes.prototype.set = function (update) {
     // Copy and overwrite this.data object with update object
     Object.assign(this.data, update);
@@ -6216,10 +6219,7 @@ var user = new User_1.User({
   name: "new record",
   age: 100
 });
-user.on("change", function () {
-  console.log("User got changed!");
-});
-user.trigger("change");
+console.log(user.get("name"));
 },{"./models/User":"src/models/User.ts"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
