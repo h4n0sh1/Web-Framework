@@ -9,3 +9,5 @@ user.on("change", () => {
 });
 
 user.trigger("change");
+
+user.set({ name: "Sephiroth" });
