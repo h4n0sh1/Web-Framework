@@ -6180,8 +6180,22 @@ var Attributes_1 = require("./Attributes");
 var rootUrl = "http://localhost:3000/users";
 var User = /** @class */function () {
   function User(attrs) {
+    var _this = this;
     this.events = new Eventing_1.Eventing();
     this.sync = new Sync_1.Sync(rootUrl);
+    this.set = function (update) {
+      _this.attributes.set(update);
+      _this.events.trigger("change");
+    };
+    this.fetch = function () {
+      var id = _this.attributes.get("id");
+      if (typeof id !== "string") {
+        throw new Error("Cannot fetch without an id");
+      }
+      _this.sync.fetch(id).then(function (response) {
+        _this.set(response.data);
+      });
+    };
     this.attributes = new Attributes_1.Attributes(attrs);
   }
   Object.defineProperty(User.prototype, "on", {
@@ -6205,10 +6219,6 @@ var User = /** @class */function () {
     enumerable: false,
     configurable: true
   });
-  User.prototype.set = function (update) {
-    this.attributes.set(update);
-    this.events.trigger("change");
-  };
   return User;
 }();
 exports.User = User;
@@ -6220,14 +6230,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 var User_1 = require("./models/User");
 var user = new User_1.User({
-  name: "new record",
-  age: 100
+  id: "4e0c"
 });
 console.log(user.get("name"));
 user.on("change", function () {
-  console.log("User was changed");
+  console.log(user);
 });
-user.trigger("change");
 user.set({
   name: "Sephiroth"
 });
@@ -6256,7 +6264,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52427" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55024" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
