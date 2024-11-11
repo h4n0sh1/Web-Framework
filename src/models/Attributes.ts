@@ -11,4 +11,8 @@ export class Attributes<T extends object> {
     // Copy and overwrite this.data object with update object
     Object.assign(this.data, update);
   }
+
+  getAll(): T {
+    return this.data;
+  }
 }

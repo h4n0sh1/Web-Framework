@@ -6164,6 +6164,9 @@ var Attributes = /** @class */function () {
     // Copy and overwrite this.data object with update object
     Object.assign(this.data, update);
   };
+  Attributes.prototype.getAll = function () {
+    return this.data;
+  };
   return Attributes;
 }();
 exports.Attributes = Attributes;
@@ -6194,6 +6197,13 @@ var User = /** @class */function () {
       }
       _this.sync.fetch(id).then(function (response) {
         _this.set(response.data);
+      });
+    };
+    this.save = function () {
+      _this.sync.save(_this.attributes.getAll()).then(function (response) {
+        _this.trigger("save");
+      }).catch(function () {
+        _this.trigger("error");
       });
     };
     this.attributes = new Attributes_1.Attributes(attrs);
@@ -6239,6 +6249,7 @@ user.on("change", function () {
 user.set({
   name: "Sephiroth"
 });
+user.save();
 },{"./models/User":"src/models/User.ts"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

@@ -9,3 +9,4 @@ user.on("change", () => {
 });
 
 user.set({ name: "Sephiroth" });
+user.save();
