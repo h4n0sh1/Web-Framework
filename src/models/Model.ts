@@ -1,4 +1,4 @@
-type Callback = () => {};
+type Callback = () => void;
 import { AxiosPromise, AxiosResponse } from "axios";
 
 interface ModelAttributes<T> {
