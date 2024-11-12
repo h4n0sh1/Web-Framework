@@ -6279,14 +6279,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 var User_1 = require("./models/User");
 var user = User_1.User.buildUser({
-  id: "54ty"
+  name: "Vanguard"
 });
 console.log(user.get("name"));
 user.on("change", function () {
   console.log(user);
-});
-user.set({
-  name: "Sephiroth"
 });
 user.save();
 },{"./models/User":"src/models/User.ts"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {

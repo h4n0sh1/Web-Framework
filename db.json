@@ -46,6 +46,22 @@
       "id": "99b2",
       "name": "new record",
       "age": 0
+    },
+    {
+      "id": "7018",
+      "name": "Sephiroth"
+    },
+    {
+      "id": "e4c5",
+      "name": "Vanguard"
+    },
+    {
+      "id": "c44e",
+      "name": "Vanguard"
+    },
+    {
+      "id": "fbc2",
+      "name": "Vanguard"
     }
   ]
 }
