@@ -9,5 +9,3 @@ user.on("change", () => {
 });
 
 user.save();
-
-user.trigger();
