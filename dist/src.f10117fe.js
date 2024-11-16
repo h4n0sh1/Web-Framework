@@ -6314,6 +6314,7 @@ var Collection = /** @class */function () {
         _this.models.push(user);
       });
     });
+    this.trigger("change");
   };
   return Collection;
 }();
@@ -6355,7 +6356,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55937" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56284" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
