@@ -7,3 +7,4 @@ collection.on("change", () => {
 });
 
 collection.fetch();
+collection.trigger();
