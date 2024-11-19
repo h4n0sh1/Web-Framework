@@ -130,8 +130,12 @@ var UserForm = /** @class */function () {
   }
   UserForm.prototype.eventsMap = function () {
     return {
-      "click:button": this.onButtonClick
+      "click:button": this.onButtonClick,
+      "mouseenter:h1": this.onMouseEnter
     };
+  };
+  UserForm.prototype.onMouseEnter = function () {
+    console.log("H1 was hovered over");
   };
   UserForm.prototype.onButtonClick = function () {
     console.log("Hi there");
