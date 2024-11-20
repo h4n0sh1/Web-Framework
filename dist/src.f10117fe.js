@@ -126,16 +126,17 @@ Object.defineProperty(exports, "__esModule", {
 exports.UserForm = void 0;
 var UserForm = /** @class */function () {
   function UserForm(parent, model) {
+    var _this = this;
     this.parent = parent;
     this.model = model;
+    this.onSetAgeClick = function () {
+      _this.model.setRandomAge();
+    };
   }
   UserForm.prototype.eventsMap = function () {
     return {
       "click:.set-age": this.onSetAgeClick
     };
-  };
-  UserForm.prototype.onSetAgeClick = function () {
-    this.model.setRandomAge();
   };
   UserForm.prototype.template = function () {
     return "\n      <div>\n        <h1>User Form</h1>\n        <div>User name: ".concat(this.model.get("name"), "</div>\n        <div>User name: ").concat(this.model.get("age"), "</div>\n        <input />\n        <button>Click me!</button>\n        <button class=\"set-age\">Set Random Age</button>\n      <div>\n    ");
