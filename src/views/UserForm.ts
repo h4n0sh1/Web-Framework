@@ -9,7 +9,9 @@ export class UserForm {
     };
   }
 
-  onSetAgeClick(): void {}
+  onSetAgeClick(): void {
+    console.log("button was clicked");
+  }
 
   template(): string {
     return `

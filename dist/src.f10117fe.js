@@ -134,7 +134,9 @@ var UserForm = /** @class */function () {
       "click:.set-age": this.onSetAgeClick
     };
   };
-  UserForm.prototype.onSetAgeClick = function () {};
+  UserForm.prototype.onSetAgeClick = function () {
+    console.log("button was clicked");
+  };
   UserForm.prototype.template = function () {
     return "\n      <div>\n        <h1>User Form</h1>\n        <div>User name: ".concat(this.model.get("name"), "</div>\n        <div>User name: ").concat(this.model.get("age"), "</div>\n        <input />\n        <button>Click me!</button>\n        <button class=\"set-age\">Set Random Age</button>\n      <div>\n    ");
   };
@@ -6364,6 +6366,13 @@ var User = /** @class */function (_super) {
   User.buildUserCollection = function () {
     return new Collection_1.Collection(rootUrl, function (json) {
       return User.buildUser(json);
+    });
+  };
+  User.prototype.setRandomAge = function () {
+    var age = Math.round(Math.random() * 100);
+    // ES2015 <-> { age : age}
+    this.set({
+      age: age
     });
   };
   return User;
