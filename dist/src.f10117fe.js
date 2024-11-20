@@ -135,7 +135,7 @@ var UserForm = /** @class */function () {
     };
   };
   UserForm.prototype.onSetAgeClick = function () {
-    console.log("button was clicked");
+    this.model.setRandomAge();
   };
   UserForm.prototype.template = function () {
     return "\n      <div>\n        <h1>User Form</h1>\n        <div>User name: ".concat(this.model.get("name"), "</div>\n        <div>User name: ").concat(this.model.get("age"), "</div>\n        <input />\n        <button>Click me!</button>\n        <button class=\"set-age\">Set Random Age</button>\n      <div>\n    ");
