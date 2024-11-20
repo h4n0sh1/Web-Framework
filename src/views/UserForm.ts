@@ -5,18 +5,11 @@ export class UserForm {
 
   eventsMap(): { [key: string]: () => void } {
     return {
-      "click:button": this.onButtonClick,
-      "mouseenter:h1": this.onMouseEnter,
+      "click:.set-age": this.onSetAgeClick,
     };
   }
 
-  onMouseEnter(): void {
-    console.log("H1 was hovered over");
-  }
-
-  onButtonClick(): void {
-    console.log("Hi there");
-  }
+  onSetAgeClick(): void {}
 
   template(): string {
     return `
@@ -26,6 +19,7 @@ export class UserForm {
         <div>User name: ${this.model.get("age")}</div>
         <input />
         <button>Click me!</button>
+        <button class="set-age">Set Random Age</button>
       <div>
     `;
   }
